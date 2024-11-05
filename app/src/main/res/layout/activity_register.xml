@@ -44,9 +44,11 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:hint="Full Name"
+                android:drawableStart="@drawable/ic_user_small"
+                android:drawablePadding="10dp"
                 android:padding="8dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/gray"
                 android:layout_marginTop="20dp"/>
 
             <!-- Email -->
@@ -56,10 +58,12 @@
                 android:layout_height="50dp"
                 android:background="@drawable/custom_edittext"
                 android:hint="Email"
-                android:inputType="textEmailAddress"
                 android:padding="8dp"
+                android:inputType="textEmailAddress"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_email_small"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColorHint="@color/gray"
                 android:layout_marginTop="20dp"/>
 
             <!-- Phone Number -->
@@ -72,6 +76,8 @@
                 android:inputType="phone"
                 android:maxLength="8"
                 android:padding="8dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_phone_small"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
                 android:layout_marginTop="20dp"/>
@@ -85,6 +91,8 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_pass_small"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
                 android:layout_marginTop="20dp"/>
@@ -98,6 +106,8 @@
                 android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_pass_small"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
                 android:layout_marginTop="20dp"/>

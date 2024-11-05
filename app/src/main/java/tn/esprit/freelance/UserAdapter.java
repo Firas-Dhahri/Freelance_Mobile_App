@@ -41,11 +41,13 @@ public class UserAdapter extends ArrayAdapter<User> {
         emailView.setText(user.getEmail());
         phoneNumberView.setText(user.getPhoneNumber());
 
-        // Set text color if needed
-        fullNameView.setTextColor(context.getResources().getColor(android.R.color.black));
-        emailView.setTextColor(context.getResources().getColor(android.R.color.black));
-        phoneNumberView.setTextColor(context.getResources().getColor(android.R.color.black));
+        // Set text color
+        int blackColor = context.getResources().getColor(android.R.color.black);
+        fullNameView.setTextColor(blackColor);
+        emailView.setTextColor(blackColor);
+        phoneNumberView.setTextColor(blackColor);
 
         return rowView;
     }
+
 }

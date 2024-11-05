@@ -18,9 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText usernameField, passwordField;
     private Button loginButton;
-    private TextView signupText;
+    private TextView signupText, forgotPasswordText; // Added forgotPasswordText here
     private ApplicationDatabase database;
     private UserDao userDao;
+    private TextView tvForgotPassword; // Variable for Forgot Password TextView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         passwordField = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
         signupText = findViewById(R.id.signupText);
+        tvForgotPassword = findViewById(R.id.forgotPasswordText); // Initialize the new TextView
 
         // Initialize Room database and UserDao
         database = ApplicationDatabase.getInstance(this);
@@ -48,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
             if (validateInputs()) {
                 authenticateUser();
             }
+        });
+
+        // Handle click event for forgot password
+        tvForgotPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, EmailInputActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -69,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // Authenticate the user by checking credentials in the database
     // Authenticate the user by checking credentials in the database
     private void authenticateUser() {
         String username = usernameField.getText().toString().trim();
@@ -107,5 +114,4 @@ public class MainActivity extends AppCompatActivity {
             });
         }).start();
     }
-
 }

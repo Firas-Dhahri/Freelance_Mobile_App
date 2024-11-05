@@ -14,6 +14,13 @@ import tn.esprit.freelance.entities.User;
 public interface UserDao {
     @Insert
     void insertUser(User user);
+    @Query("SELECT * FROM user WHERE phoneNumber = :phoneNumber LIMIT 1")
+    User findUserByPhoneNumber(String phoneNumber);
+
+    @Query("SELECT * FROM user WHERE email = :email LIMIT 1")
+    User getUserByEmail(String email);
+
+
 
     @Query("SELECT * FROM user WHERE id = :userId LIMIT 1")
     User getUserById(long userId);

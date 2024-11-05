@@ -29,6 +29,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    packaging {
+        // Exclude duplicate files
+        exclude("META-INF/NOTICE.md")
+        exclude("META-INF/LICENSE.md") // If you have a duplicate LICENSE.md too
+    }
 }
 
 dependencies {

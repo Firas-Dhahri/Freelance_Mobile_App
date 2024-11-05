@@ -55,48 +55,59 @@ public class RegisterActivity extends AppCompatActivity {
         String passwordStr = password.getText().toString();
         String confirmPasswordStr = confirmPassword.getText().toString();
 
+        // Full name validation
         if (TextUtils.isEmpty(fullNameStr)) {
             fullName.setError("Full name is required");
             fullName.requestFocus();
             return false;
         }
 
+        // Email validation with regex
         if (TextUtils.isEmpty(emailStr)) {
             email.setError("Email is required");
             email.requestFocus();
             return false;
+        } else if (!emailStr.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            email.setError("Invalid email format (expected format: xxx@xxx.xxx)");
+            email.requestFocus();
+            return false;
         }
 
+        // Phone number validation
         if (TextUtils.isEmpty(phoneStr)) {
             phoneNumber.setError("Phone number is required");
             phoneNumber.requestFocus();
             return false;
-        } else if (phoneStr.length() != 8) {
-            phoneNumber.setError("Phone number must be 8 digits");
+        } else if (phoneStr.length() != 8 || !phoneStr.matches("\\d{8}")) {
+            phoneNumber.setError("Phone number must be exactly 8 digits");
             phoneNumber.requestFocus();
             return false;
         }
 
+        // Password validation
         if (TextUtils.isEmpty(passwordStr)) {
             password.setError("Password is required");
             password.requestFocus();
             return false;
         }
 
+        // Confirm password validation
         if (TextUtils.isEmpty(confirmPasswordStr)) {
             confirmPassword.setError("Please confirm your password");
             confirmPassword.requestFocus();
             return false;
-        }
-
-        if (!passwordStr.equals(confirmPasswordStr)) {
+        } else if (!passwordStr.equals(confirmPasswordStr)) {
             confirmPassword.setError("Passwords do not match");
             confirmPassword.requestFocus();
             return false;
         }
 
+        // Client/Freelancer selection validation
         if (!clientCheckBox.isChecked() && !freelancerCheckBox.isChecked()) {
             Toast.makeText(this, "Please select either Client or Freelancer", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (clientCheckBox.isChecked() && freelancerCheckBox.isChecked()) {
+            Toast.makeText(this, "Select only one role: Client or Freelancer", Toast.LENGTH_SHORT).show();
             return false;
         }
 

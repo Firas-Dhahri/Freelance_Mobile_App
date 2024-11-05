@@ -36,8 +36,7 @@ public class AdminUserManagementActivity extends AppCompatActivity {
         new Thread(() -> {
             userList = userDao.getAllUsers(); // Fetch all users from the database
             runOnUiThread(() -> {
-                ArrayAdapter<User> adapter = new ArrayAdapter<>(AdminUserManagementActivity.this,
-                        android.R.layout.simple_list_item_1, userList);
+                UserAdapter adapter = new UserAdapter(AdminUserManagementActivity.this, userList);
                 userListView.setAdapter(adapter);
             });
         }).start();
@@ -49,4 +48,5 @@ public class AdminUserManagementActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
 }
