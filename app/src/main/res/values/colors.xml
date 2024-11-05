@@ -4,4 +4,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#808080</color>
+    <color name="sea_light_blue">#BAD2E0</color>
+    <color name="sea_blue">#82AFF2</color>
+    <color name="sea_mid_blue">#3078CD</color>
+    <color name="sea_dark_blue">#25456B</color>
+    <color name="sea_navy_blue">#113356</color>
+
 </resources>

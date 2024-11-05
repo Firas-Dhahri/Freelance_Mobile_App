@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 authenticateUser();
             }
         });
+
+
     }
 
     // Validate the inputs (username and password)
@@ -107,5 +109,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }).start();
     }
+
 
 }

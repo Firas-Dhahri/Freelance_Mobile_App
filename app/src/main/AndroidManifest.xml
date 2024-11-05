@@ -37,5 +37,8 @@
             android:exported="true"
             android:label="User Details" />
 
+        <activity android:name=".ApplyJobActivity"
+           />
+
     </application>
 </manifest>
