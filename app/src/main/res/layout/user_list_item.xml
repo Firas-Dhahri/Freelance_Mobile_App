@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+        android:gravity="center"
         android:textColor="@android:color/black"/>
 
     <TextView
@@ -16,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
+        android:gravity="center"
         android:textSize="14sp" />
 
     <TextView
@@ -23,5 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
+        android:gravity="center"
         android:textColor="@android:color/black"/>
 </LinearLayout>

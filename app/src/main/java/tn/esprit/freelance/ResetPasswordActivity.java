@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import tn.esprit.freelance.DAO.UserDao;
 import tn.esprit.freelance.database.ApplicationDatabase;
 import tn.esprit.freelance.entities.User;
@@ -58,7 +60,8 @@ public class ResetPasswordActivity extends AppCompatActivity {
             new Thread(() -> {
                 User user = userDao.getUserById(userId);
                 if (user != null) {
-                    user.setPassword(newPassword); // Consider hashing the password here
+                    String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt(12));
+                    user.setPassword(hashedPassword); // Consider hashing the password here
                     userDao.updateUser(user); // Update user in the database
 
                     runOnUiThread(() -> {

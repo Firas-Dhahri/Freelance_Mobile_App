@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import tn.esprit.freelance.DAO.UserDao;
 import tn.esprit.freelance.database.ApplicationDatabase;
 import tn.esprit.freelance.entities.User;
@@ -83,32 +85,36 @@ public class MainActivity extends AppCompatActivity {
         String password = passwordField.getText().toString().trim();
 
         new Thread(() -> {
-            // Query the user by username and password
-            User user = userDao.getUserByEmailAndPassword(username, password);
+            // Fetch user by username only
+            User user = userDao.getUserByEmail(username);
 
             runOnUiThread(() -> {
                 if (user != null) {
-                    // Check if the user is banned
-                    if (user.isBanned()) {
-                        // If banned, show a message and prevent access
-                        Toast.makeText(MainActivity.this, "Your account has been banned. Access denied.", Toast.LENGTH_LONG).show();
-                        return;
-                    }
+                    // Verify password using bcrypt
+                    if (BCrypt.checkpw(password, user.getPassword())) {
+                        if (user.isBanned()) {
+                            Toast.makeText(MainActivity.this, "Your account has been banned. Access denied.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
 
-                    // Authentication success: check user role
-                    Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                        // Authentication success: check user role
+                        Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
 
-                    // Redirect based on user role
-                    Intent intent;
-                    if ("ADMIN".equals(user.getRole())) {
-                        intent = new Intent(MainActivity.this, AdminUserManagementActivity.class);  // Redirect to admin management for admins
+                        // Redirect based on user role
+                        Intent intent;
+                        if ("ADMIN".equals(user.getRole())) {
+                            intent = new Intent(MainActivity.this, AdminUserManagementActivity.class);
+                        } else {
+                            intent = new Intent(MainActivity.this, DashboardActivity.class);
+                        }
+                        startActivity(intent);
+                        finish();
                     } else {
-                        intent = new Intent(MainActivity.this, DashboardActivity.class);  // Redirect to dashboard for regular users
+                        // Incorrect password
+                        Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
                     }
-                    startActivity(intent);
-                    finish();
                 } else {
-                    // Authentication failed
+                    // User not found
                     Toast.makeText(MainActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
                 }
             });
