@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Date;
+
 import tn.esprit.freelance.DAO.ApplicationDao;
 import tn.esprit.freelance.database.ApplicationDatabase;
 import tn.esprit.freelance.entities.Application;
@@ -60,9 +62,11 @@ public class ApplyJobActivity extends AppCompatActivity {
         String nom = etFreelancerName.getText().toString();
         String email = etFreelancerEmail.getText().toString();
         String lettreMotivation = etCoverLetter.getText().toString();
+        String date = "09-11-2024"; // Current date
+        String status = "Pending";
         // Assume cvPath is set earlier when the user selects their CV
-        Application candidature = new Application(nom, email, lettreMotivation, cvPath);
-        ApplicationDao candidatureDao = ApplicationDatabase.getInstance(this).candidatureDao();
+        Application candidature = new Application(nom, email, lettreMotivation, cvPath, date, status);
+        ApplicationDao candidatureDao = ApplicationDatabase.getInstance(this).applicationDao();
 
         // Insert in a separate thread
         new Thread(() -> {

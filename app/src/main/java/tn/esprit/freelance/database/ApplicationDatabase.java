@@ -14,13 +14,13 @@ import tn.esprit.freelance.DAO.ApplicationDao;
 import tn.esprit.freelance.entities.Application;
 import tn.esprit.freelance.entities.User;
 
-@Database(entities = {User.class, Application.class}, version = 3, exportSchema = false)
+@Database(entities = {User.class, Application.class}, version = 4, exportSchema = false)
 public abstract class ApplicationDatabase extends RoomDatabase {
 
     private static ApplicationDatabase instance;
 
     public abstract UserDao userDao();
-    public abstract ApplicationDao candidatureDao(); // Add this line
+    public abstract ApplicationDao applicationDao(); // Add this line
 
     // Define migration from version 1 to version 2
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
@@ -36,6 +36,14 @@ public abstract class ApplicationDatabase extends RoomDatabase {
         public void migrate(SupportSQLiteDatabase database) {
             // Renommer la table de "candidatures" à "applications"
             database.execSQL("ALTER TABLE candidatures RENAME TO applications");
+        }
+    };
+    static final Migration MIGRATION_3_4 = new Migration(3, 4) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            // Renommer la table de "candidatures" à "applications"
+            database.execSQL("ALTER TABLE Applications ADD COLUMN date TEXT");
+            database.execSQL("ALTER TABLE Applications ADD COLUMN status TEXT");
         }
     };
 
@@ -57,7 +65,7 @@ public abstract class ApplicationDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                             ApplicationDatabase.class, "freelance")
-                    .addMigrations(MIGRATION_1_2,MIGRATION_2_3)  // Add the migration step
+                    .addMigrations(MIGRATION_1_2,MIGRATION_2_3,MIGRATION_3_4)  // Add the migration step
                     .addCallback(databaseCallback)  // Add the callback for initial admin user
                     .allowMainThreadQueries()
                     .build();

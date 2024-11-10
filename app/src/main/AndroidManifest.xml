@@ -5,6 +5,7 @@
     <!-- Permissions required for the app -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/> -->
 
     <application
         android:allowBackup="true"
@@ -37,8 +38,8 @@
             android:exported="true"
             android:label="User Details" />
 
-        <activity android:name=".ApplyJobActivity"
-           />
+        <activity android:name=".ApplyJobActivity" />
+        <activity android:name=".ApplicationListActivity"/>
 
     </application>
 </manifest>

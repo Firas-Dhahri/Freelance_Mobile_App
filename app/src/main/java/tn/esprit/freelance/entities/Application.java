@@ -2,7 +2,7 @@ package tn.esprit.freelance.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+import java.util.Date;
 @Entity(tableName = "Applications")
 public class Application {
     @PrimaryKey(autoGenerate = true)
@@ -11,13 +11,17 @@ public class Application {
     private String email;
     private String lettreMotivation;
     private String cvPath; // Chemin du fichier CV
+    private String date;    // Date de soumission
+    private String status;  // Statut de l'application (e.g., "Pending", "Accepted", "Rejected")
 
     // Constructeur
-    public Application(String nom, String email, String lettreMotivation, String cvPath) {
+    public Application(String nom, String email, String lettreMotivation, String cvPath, String date, String status) {
         this.nom = nom;
         this.email = email;
         this.lettreMotivation = lettreMotivation;
         this.cvPath = cvPath;
+        this.date = date;
+        this.status = status;
     }
 
     // Getters et setters
@@ -44,4 +48,20 @@ public class Application {
     public String getCvPath() {
         return cvPath;
     }
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }
