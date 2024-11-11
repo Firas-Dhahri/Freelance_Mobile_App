@@ -14,6 +14,7 @@ public class DashboardActivity extends AppCompatActivity {
     private TextView welcomeText;
     private Button applyButton;
     private Button listApplyButton;
+    private Button listCandidatButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class DashboardActivity extends AppCompatActivity {
         welcomeText = findViewById(R.id.welcomeText);
         applyButton = findViewById(R.id.applyButton);
         listApplyButton = findViewById(R.id.listApplyButton);
+        listCandidatButton = findViewById(R.id.listCandidatButton);
         // Set the welcome message
         welcomeText.setText("Hello, you are now in the platform!");
         // Set OnClickListener to open the application form
@@ -34,6 +36,10 @@ public class DashboardActivity extends AppCompatActivity {
         listApplyButton.setOnClickListener(v -> {
             Intent intent1 = new Intent(DashboardActivity.this, ApplicationListActivity.class);
             startActivity(intent1);
+        });
+        listCandidatButton.setOnClickListener(v -> {
+            Intent intent2 = new Intent(DashboardActivity.this, CandidatListActivity.class);
+            startActivity(intent2);
         });
 
     }
