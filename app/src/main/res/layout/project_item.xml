@@ -41,19 +41,13 @@
             android:textSize="14sp"
             android:textColor="@color/gray"
             android:layout_marginTop="2dp"/>
-        <TextView
-            android:id="@+id/projectEndDateTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp"/>
-        <!-- Project Budget -->
-        <TextView
-            android:id="@+id/projectBudgetTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp"/>
 
+        <!-- Apply Button inside the LinearLayout -->
+        <ImageView
+            android:id="@+id/postule"
+            android:layout_width="65dp"
+            android:layout_height="47dp"
+            app:srcCompat="@drawable/postule"
+            android:layout_marginEnd="8dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

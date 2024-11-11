@@ -17,7 +17,7 @@ public interface ProjectDao {
 
     @Query("SELECT * FROM project")
     List<Project> getAllProjects();
-    @Query("SELECT * FROM project WHERE status = 'En attente'")
+    @Query("SELECT * FROM project WHERE status = 'En attente' ")
     List<Project> getProjectByStatus();
     @Update
     void update(Project project);
