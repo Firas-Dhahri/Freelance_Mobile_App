@@ -20,6 +20,7 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
+
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
@@ -28,13 +29,27 @@
         android:textColor="@color/sea_mid_blue"
         android:textSize="14sp"
         android:layout_marginTop="4dp" />
-
-    <TextView
-        android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pending"
-        android:textColor="@color/purple"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp" />
+        android:padding="8dp"
+        android:background="@color/sea_light_blue"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pending"
+            android:textColor="@color/purple"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
+        <Button
+            android:id="@+id/tvbtnDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/sea_blue"
+            android:text="Detail"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
 </LinearLayout>

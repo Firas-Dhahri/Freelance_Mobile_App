@@ -40,6 +40,7 @@
 
         <activity android:name=".ApplyJobActivity" />
         <activity android:name=".ApplicationListActivity"/>
+        <activity android:name=".DetailActivity"/>
 
     </application>
 </manifest>

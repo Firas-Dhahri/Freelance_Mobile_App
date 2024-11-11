@@ -1,7 +1,10 @@
 package tn.esprit.freelance;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,8 +14,9 @@ import tn.esprit.freelance.entities.Application;
 
 public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.ApplicationViewHolder> {
     private List<Application> applications;
-
-    public ApplicationAdapter(List<Application> applications) {
+    private final Context context;
+    public ApplicationAdapter(Context context,List<Application> applications) {
+        this.context = context;
         this.applications = applications;
     }
 
@@ -29,6 +33,15 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
         holder.tvApplicantName.setText(application.getNom());
         holder.tvApplicationDate.setText("Date: " + application.getDate());
         holder.tvApplicationStatus.setText(application.getStatus());
+        // Set click listener for Detail button
+        holder.tvbtnDetail.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra("name", application.getNom());
+            intent.putExtra("email", application.getEmail());
+            intent.putExtra("coverLetter", application.getLettreMotivation());
+            intent.putExtra("cvPath", application.getCvPath());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -38,12 +51,13 @@ public class ApplicationAdapter extends RecyclerView.Adapter<ApplicationAdapter.
 
     static class ApplicationViewHolder extends RecyclerView.ViewHolder {
         TextView tvApplicantName, tvApplicationDate, tvApplicationStatus;
-
+        Button tvbtnDetail;
         ApplicationViewHolder(View itemView) {
             super(itemView);
             tvApplicantName = itemView.findViewById(R.id.tvName);
             tvApplicationDate = itemView.findViewById(R.id.tvDate);
             tvApplicationStatus = itemView.findViewById(R.id.tvStatus);
+            tvbtnDetail = itemView.findViewById(R.id.tvbtnDetail);
         }
     }
 }

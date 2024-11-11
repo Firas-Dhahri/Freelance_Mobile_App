@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         database = ApplicationDatabase.getInstance(this);
         userDao = database.userDao();
 
+
+
         // Redirect to RegisterActivity if "Sign Up" is clicked
         signupText.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
@@ -92,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
                     // Authentication success: check user role
                     Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-
+                    // Save user session data
+                    SessionManager sessionManager = new SessionManager(this);
+                    sessionManager.saveUser(user.getFullName(), user.getEmail());
                     // Redirect based on user role
                     Intent intent;
                     if ("ADMIN".equals(user.getRole())) {
