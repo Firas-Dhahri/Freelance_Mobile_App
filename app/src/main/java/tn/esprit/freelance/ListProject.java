@@ -56,7 +56,7 @@ public class ListProject extends AppCompatActivity {
         // Set listeners for navigation
         findViewById(R.id.imageView).setOnClickListener(v -> navigateToAddProjectActivity());
         findViewById(R.id.signin).setOnClickListener(v -> navigateToSignInActivity());
-
+        findViewById(R.id.postule).setOnClickListener(v -> navigateTopostule());
         // Set the search button click listener
         findViewById(R.id.searchButton).setOnClickListener(v -> performSearch());
     }
@@ -120,6 +120,10 @@ public class ListProject extends AppCompatActivity {
     }
 
     private void navigateToSignInActivity() {
+        Intent intent = new Intent(ListProject.this, MainActivity.class);
+        startActivity(intent);
+    }
+    private void navigateTopostule() {
         Intent intent = new Intent(ListProject.this, MainActivity.class);
         startActivity(intent);
     }
