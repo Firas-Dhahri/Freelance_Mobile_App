@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.content.Context;
-
+import tn.esprit.freelance.SessionManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,10 +26,17 @@ public class ListProject extends AppCompatActivity {
     private ApplicationDatabase db;
     private EditText inputField;
 
+    // SessionManager
+    private SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_project);
+
+        // Initialize SessionManager
+        sessionManager = new SessionManager(this);
+
         // Initialize RecyclerView
         projectRecyclerView = findViewById(R.id.projectRecyclerView);
         projectRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -46,6 +53,7 @@ public class ListProject extends AppCompatActivity {
         // Load projects from the database
         loadProjectsFromDatabase();
 
+        // Set listeners for navigation
         findViewById(R.id.imageView).setOnClickListener(v -> navigateToAddProjectActivity());
         findViewById(R.id.signin).setOnClickListener(v -> navigateToSignInActivity());
 
@@ -74,17 +82,17 @@ public class ListProject extends AppCompatActivity {
         String searchQuery = inputField.getText().toString().toLowerCase().trim();
 
         if (searchQuery.isEmpty()) {
-            // Si le champ de recherche est vide, afficher tous les projets
+            // If search field is empty, show all projects
             loadProjectsFromDatabase();
         } else {
-            // Recherche dans la base de données en utilisant la nouvelle méthode du DAO
+            // Search projects in the database using LIKE
             new Thread(() -> {
-                List<Project> filteredProjects = db.projectDao().searchProjects("%" + searchQuery + "%"); // Utilisation de LIKE
+                List<Project> filteredProjects = db.projectDao().searchProjects("%" + searchQuery + "%"); // Using LIKE
                 runOnUiThread(() -> {
                     if (filteredProjects.isEmpty()) {
                         Toast.makeText(ListProject.this, "No matching projects found", Toast.LENGTH_SHORT).show();
                     } else {
-                        // Mettre à jour la liste filtrée
+                        // Update filtered list
                         filteredList.clear();
                         filteredList.addAll(filteredProjects);
                         projectAdapter.notifyDataSetChanged();
@@ -95,9 +103,22 @@ public class ListProject extends AppCompatActivity {
     }
 
     private void navigateToAddProjectActivity() {
-        Intent intent = new Intent(ListProject.this, AddprojectActivity.class);
-        startActivity(intent);
+        // Check if the user is logged in and has the 'FREELANCER' role
+        String fullName = sessionManager.getFullName();
+        String email = sessionManager.getEmail();
+        String role = sessionManager.getUserRole();  // Assume SessionManager has a method to get role
+        if (fullName != null && email != null && "CLIENT".equals(role)) {
+            // User is logged in and has 'FREELANCER' role
+            Intent intent = new Intent(ListProject.this, AddprojectActivity.class);
+            startActivity(intent);
+        } else {
+            // User is not logged in or does not have 'FREELANCER' role, redirect to MainActivity
+            Intent intent = new Intent(ListProject.this, MainActivity.class);
+            startActivity(intent);
+            Toast.makeText(this, "You must be a Freelancer to add a project", Toast.LENGTH_SHORT).show();
+        }
     }
+
     private void navigateToSignInActivity() {
         Intent intent = new Intent(ListProject.this, MainActivity.class);
         startActivity(intent);

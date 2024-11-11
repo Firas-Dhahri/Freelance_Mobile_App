@@ -28,6 +28,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    packaging {
+        // Exclude duplicate files
+        exclude("META-INF/NOTICE.md")
+        exclude("META-INF/LICENSE.md") // If you have a duplicate LICENSE.md too
+    }
 }
 
 dependencies {
@@ -39,5 +45,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("androidx.room:room-runtime:2.6.1")
+    implementation ("de.svenkubiak:jBCrypt:0.4.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
 }

@@ -74,16 +74,6 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/project_owner"
-                android:hint="Project Owner"
-                android:drawablePadding="8dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:background="@drawable/edittext_bkg"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
                 android:id="@+id/project_budget"
                 android:hint="Budget ($)"
                 android:inputType="numberDecimal"

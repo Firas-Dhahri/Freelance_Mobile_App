@@ -24,6 +24,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
 
     private TextView projectNameTextView,projectStatusTextView, projectDescriptionTextView, projectOwnerTextView, projectStartDateTextView, projectEndDateTextView, projectBudgetTextView, projectDetailsSubtitle;
     private ImageView projectImageView;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

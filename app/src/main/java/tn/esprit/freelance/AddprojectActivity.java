@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 
@@ -26,22 +25,28 @@ public class AddprojectActivity extends AppCompatActivity {
     private EditText projectStartDate;
     private EditText projectEndDate;
     private EditText projectStatus;
-    private EditText projectOwner;
     private EditText projectBudget;
     private Button signupButton;
     private AppCompatImageButton backButton;
+    private String fullName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addproject);
 
+        // Initialize SessionManager
+        SessionManager sessionManager = new SessionManager(this);
+
+        // Get user details from session
+        String email = sessionManager.getEmail();
+        String role = sessionManager.getUserRole();  // Assuming `getRole()` method exists in `SessionManager`
+        fullName = sessionManager.getFullName();
         // Initialize views
         projectName = findViewById(R.id.project_name);
         projectDescription = findViewById(R.id.project_description);
         projectStartDate = findViewById(R.id.project_start_date);
         projectEndDate = findViewById(R.id.project_end_date);
-        projectOwner = findViewById(R.id.project_owner);
         projectBudget = findViewById(R.id.project_budget);
         signupButton = findViewById(R.id.signup_button);
         backButton = findViewById(R.id.backButton);
@@ -69,11 +74,11 @@ public class AddprojectActivity extends AppCompatActivity {
         String startDateString = projectStartDate.getText().toString().trim();
         String endDateString = projectEndDate.getText().toString().trim();
         String status = "En attente";
-        String owner = projectOwner.getText().toString().trim();
+     // Assuming you have this method
         String budgetString = projectBudget.getText().toString().trim();
 
         if (name.isEmpty() || description.isEmpty() || startDateString.isEmpty() ||
-                endDateString.isEmpty() || owner.isEmpty() || budgetString.isEmpty()) {
+                endDateString.isEmpty()|| budgetString.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -100,7 +105,7 @@ public class AddprojectActivity extends AppCompatActivity {
         }
 
         // Create a new Project object
-        Project project = new Project(description, name, startDate, endDate, status, owner, budget);
+        Project project = new Project(description, name, startDate, endDate, status,fullName , budget);
 
         // Save the project to Room Database
         saveProjectToDatabase(project);
