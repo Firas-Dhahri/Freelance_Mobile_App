@@ -21,7 +21,6 @@ public class UserAdapter extends ArrayAdapter<User> {
         this.context = context;
         this.users = users;
     }
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View rowView = convertView;
