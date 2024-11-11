@@ -99,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
                         // Authentication success: check user role
                         Toast.makeText(MainActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-
+                        SessionManager sessionManager = new SessionManager(this);
+                        sessionManager.saveUser(user.getFullName(), user.getEmail(),user.getRole());
                         // Redirect based on user role
                         Intent intent;
                         if ("ADMIN".equals(user.getRole())) {

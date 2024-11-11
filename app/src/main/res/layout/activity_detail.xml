@@ -1,0 +1,103 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/sea_light_blue">
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/tvDetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Application Details"
+        android:textSize="24sp"
+        android:textColor="@color/sea_dark_blue"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Card for all details -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Applicant Details -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Applicant Name"
+                android:textColor="@color/sea_navy_blue"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email: applicant@example.com"
+                android:textColor="@color/sea_navy_blue"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvCoverLetter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cover Letter: Brief description of applicant's cover letter."
+                android:textColor="@color/sea_navy_blue"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvCVPath"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CV Path: /path/to/cv.pdf"
+                android:textColor="@color/sea_navy_blue"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp" />
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/sea_mid_blue"
+                android:text="Edit"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp" />
+
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Delete Application"
+                android:src="@drawable/delete" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/sea_mid_blue"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp" />
+</LinearLayout>

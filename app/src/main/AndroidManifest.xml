@@ -45,6 +45,7 @@
 
         <activity android:name=".EmailInputActivity" />
         <activity android:name=".ResetPasswordActivity" />
-
+        <activity android:name=".ApplyJobActivity"/>
+        <activity android:name=".ApplicationListActivity"/>
     </application>
 </manifest>

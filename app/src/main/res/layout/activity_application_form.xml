@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/sea_light_blue">
+
+    <!-- Barre bleue en haut avec le titre de la page -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/sea_mid_blue"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Postuler à un projet"
+            android:textSize="24sp"
+            android:textColor="@color/sea_light_blue"
+            android:fontFamily="sans-serif-medium" />
+    </LinearLayout>
+
+    <!-- Nom du Freelancer -->
+    <EditText
+        android:id="@+id/etFreelancerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom et prénom"
+        android:backgroundTint="@color/sea_mid_blue"
+        android:textColorHint="@color/sea_dark_blue"
+        android:textColor="@color/sea_navy_blue"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Email -->
+    <EditText
+        android:id="@+id/etFreelancerEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:backgroundTint="@color/sea_mid_blue"
+        android:textColorHint="@color/sea_dark_blue"
+        android:textColor="@color/sea_navy_blue"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Message de candidature -->
+    <EditText
+        android:id="@+id/etCoverLetter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Lettre de motivation"
+        android:backgroundTint="@color/sea_mid_blue"
+        android:textColorHint="@color/sea_dark_blue"
+        android:textColor="@color/sea_navy_blue"
+        android:padding="12dp"
+        android:gravity="top"
+        android:lines="5"
+        android:layout_marginTop="16dp" />
+
+    <!-- Bouton pour sélectionner le CV -->
+    <Button
+        android:id="@+id/btnSelectCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Télécharger votre CV"
+        android:backgroundTint="@color/sea_navy_blue"
+        android:textColor="@color/sea_light_blue"
+        android:layout_marginTop="16dp" />
+
+    <!-- Nom du fichier CV sélectionné -->
+    <TextView
+        android:id="@+id/tvSelectedCV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aucun fichier sélectionné"
+        android:textSize="16sp"
+        android:textColor="@color/sea_dark_blue"
+        android:layout_marginTop="8dp" />
+
+
+    <!-- Bouton de soumission -->
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Soumettre la candidature"
+        android:backgroundTint="@color/sea_dark_blue"
+        android:textColor="@color/sea_light_blue"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

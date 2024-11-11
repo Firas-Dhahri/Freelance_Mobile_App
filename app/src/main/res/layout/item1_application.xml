@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/sea_light_blue"
+    android:layout_marginBottom="12dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:elevation="4dp"
+    android:backgroundTint="@color/sea_light_blue">
+
+    <!-- Applicant Name TextView -->
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Applicant Name"
+        android:textColor="@color/sea_blue"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Application Date TextView -->
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Application Date"
+        android:textColor="@color/sea_mid_blue"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp" />
+
+    <!-- Status and Buttons Layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="119dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/sea_light_blue"
+        android:padding="8dp">
+
+        <!-- Status TextView -->
+
+        <!-- Detail Button -->
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:text="Pending"
+            android:textColor="@color/purple"
+            android:textSize="14sp" />
+
+        <!-- Accepter Button -->
+        <Button
+            android:id="@+id/tvbtnDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="7dp"
+            android:backgroundTint="@color/sea_blue"
+            android:text="Detail"
+            android:textColor="@color/white" />
+
+      </RelativeLayout>
+
+</LinearLayout>
