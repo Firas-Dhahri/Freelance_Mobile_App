@@ -5,14 +5,28 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="end">
-    <TextView
-        android:id="@+id/projectDetailsSubtitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Projects"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/projectDetailsSubtitle"
+            android:layout_width="328dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Projects"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="45dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/add_box" />
+    </LinearLayout>
+
     <!-- Horizontal Layout for Image, Input, and Button -->
     <LinearLayout
         android:layout_width="match_parent"

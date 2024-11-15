@@ -15,6 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Freelence">
         <activity
+            android:name=".EditApplicationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CandidatListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ApplyJobActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ApplyJob"
+            android:exported="false" />
+        <activity
+            android:name=".ApplicationListActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProjectDetailOwner"
             android:exported="false" />
         <activity
@@ -61,6 +76,7 @@
             android:name=".UserDetailActivity"
             android:exported="true"
             android:label="User Details" />
-    </application>
+        <activity android:name=".DetailActivity" />
+        </application>
 
 </manifest>

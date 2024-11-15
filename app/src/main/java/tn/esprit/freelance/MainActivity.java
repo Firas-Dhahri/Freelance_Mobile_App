@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 authenticateUser();
             }
         });
-
-        // Handle click event for forgot password
-        tvForgotPassword.setOnClickListener(v -> {
+        /*tvForgetPassword.setOnclickListener(v->{
             Intent intent = new Intent(MainActivity.this, EmailInputActivity.class);
             startActivity(intent);
-        });
+        });*/
+
+
     }
 
     // Validate the inputs (username and password)
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         } else if ("CLIENT".equals(user.getRole())){
                             intent = new Intent(MainActivity.this, ListProjectOwner.class);
                         } else {
-                            intent = new Intent(MainActivity.this, AddprojectActivity.class);
+                            intent = new Intent(MainActivity.this, ListProject.class);
                         }
                         startActivity(intent);
                         finish();

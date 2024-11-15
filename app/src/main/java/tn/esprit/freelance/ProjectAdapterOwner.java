@@ -44,6 +44,11 @@ public class ProjectAdapterOwner extends RecyclerView.Adapter<ProjectAdapterOwne
             intent.putExtra("PROJECT_ID", project.getId());
             context.startActivity(intent);
         });
+        holder.applyListButton.setOnClickListener(v -> {
+            Intent intent = new Intent(context, CandidatListActivity.class);
+            intent.putExtra("projectId", project.getId());
+            context.startActivity(intent);
+        });
 
         // Handle Update button click
         holder.updateButton.setOnClickListener(v -> {
@@ -77,7 +82,7 @@ public class ProjectAdapterOwner extends RecyclerView.Adapter<ProjectAdapterOwne
     }
 
     public static class ProjectViewHolder extends RecyclerView.ViewHolder {
-        TextView projectName, projectDescription, projectOwner, updateButton, deleteButton;
+        TextView projectName, projectDescription, projectOwner, updateButton, deleteButton,applyListButton;
 
         public ProjectViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,7 +90,8 @@ public class ProjectAdapterOwner extends RecyclerView.Adapter<ProjectAdapterOwne
             projectDescription = itemView.findViewById(R.id.projectDescription);
             projectOwner = itemView.findViewById(R.id.projectOwner);
             updateButton = itemView.findViewById(R.id.updateButton); // Ensure your layout has this ID
-            deleteButton = itemView.findViewById(R.id.deleteButton); // Ensure your layout has this ID
+            deleteButton = itemView.findViewById(R.id.deleteButton);
+            applyListButton = itemView.findViewById(R.id.applyListButton);// Ensure your layout has this ID
         }
     }
 }

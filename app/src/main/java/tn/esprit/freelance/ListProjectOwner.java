@@ -53,9 +53,15 @@ public class ListProjectOwner extends AppCompatActivity {
 
         // Load projects from the database
         loadProjectsFromDatabase();
+        findViewById(R.id.imageView).setOnClickListener(v -> navigateToAddProjectActivity());
+
 
         // Set the search button click listener
         findViewById(R.id.searchButton).setOnClickListener(v -> performSearch());
+    }
+    private void navigateToAddProjectActivity() {
+            Intent intent = new Intent(ListProjectOwner.this, AddprojectActivity.class);
+            startActivity(intent);
     }
 
     private void loadProjectsFromDatabase() {

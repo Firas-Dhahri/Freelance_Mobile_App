@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/sea_light_blue">
+
+    <!-- Title TextView -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Application"
+        android:textSize="24sp"
+        android:textColor="@color/sea_dark_blue"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Name Section -->
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Applicant Name"
+        android:textColor="@color/sea_navy_blue"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Email Section -->
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textColor="@color/sea_navy_blue"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Cover Letter Section -->
+    <EditText
+        android:id="@+id/etCoverLetter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cover Letter"
+        android:textColor="@color/sea_navy_blue"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        android:inputType="textMultiLine"/>
+
+    <!-- CV Path Section -->
+    <EditText
+        android:id="@+id/etCVPath"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CV Path"
+        android:textColor="@color/sea_navy_blue"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/sea_mid_blue"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

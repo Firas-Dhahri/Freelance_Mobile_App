@@ -59,13 +59,17 @@ public class ListProjectUser extends AppCompatActivity {
                     Toast.makeText(ListProjectUser.this, "No projects found", Toast.LENGTH_SHORT).show();
                 } else {
                     // Set up the adapter with the filtered project list
-                    projectAdapter = new ProjectAdapter(ListProjectUser.this, filteredList);
+                    projectAdapter = new ProjectAdapter(ListProjectUser.this, filteredList, this::navigateToPostule);
                     projectRecyclerView.setAdapter(projectAdapter);
                 }
             });
         }).start();
     }
-
+    private void navigateToPostule(Project project) {
+        // Implement the navigation or functionality when the apply button is clicked
+        Intent intent = new Intent(ListProjectUser.this, MainActivity.class);  // Adjust based on your requirement
+        startActivity(intent);
+    }
     // Perform search based on the input field
     private void performSearch() {
         String searchQuery = inputField.getText().toString().toLowerCase().trim();
